@@ -25,6 +25,7 @@
             --accent-color: #0067b8;
             --accent-hover: #005a9e;
             --btn-text: #ffffff;
+            --link-box-bg: #f0f0f0;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -38,6 +39,7 @@
                 --accent-color: #60cdff;
                 --accent-hover: #4cc3ff;
                 --btn-text: #000000;
+                --link-box-bg: #383838;
             }
         }
 
@@ -58,7 +60,7 @@
             padding: 20px;
         }
 
-        /* --- ✨ EFECTO DE DESVANECIMIENTO ENTRADA (FADE-IN) --- */
+        /* --- EFECTO DE DESVANECIMIENTO ENTRADA (FADE-IN) --- */
         .container {
             width: 100%;
             max-width: 800px;
@@ -67,16 +69,13 @@
             border-radius: var(--border-radius-card);
             padding: 40px 30px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-
-            /* Aquí configuramos la animación nativa de CSS */
             animation: fadeInEfecto 1.2s ease-out forwards;
         }
 
-        /* Definimos los fotogramas del desvanecimiento */
         @keyframes fadeInEfecto {
             from {
                 opacity: 0;
-                transform: translateY(8px); /* Sutil subida milimétrica tipo Windows 11 */
+                transform: translateY(8px);
             }
             to {
                 opacity: 1;
@@ -123,30 +122,67 @@
             gap: 10px;
         }
 
+        /* --- 📦 CONTENEDOR SUB-APARTADOS DE DESCARGA --- */
+        .download-platform-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .platform-block {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 14px;
+            margin-bottom: 4px;
+        }
+
+        .platform-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        /* --- 🔗 GRILLA PARA LOS ENLACES DE DESCARGA --- */
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* Bloque individual de enlace (Mirror / Servidor) */
+        .download-link-item {
+            flex: 1;
+            min-width: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background-color: var(--link-box-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius-btn);
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: border-color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .download-link-item:hover {
+            border-color: var(--accent-color);
+            background-color: var(--container-bg);
+        }
+
+        .link-server-name {
+            opacity: 0.7;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        /* --- BOTONES DE REDES COMUNIDAD --- */
         .grid-buttons {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-        }
-
-        .download-btn {
-            flex: 1;
-            min-width: 200px;
-            padding: 12px 24px;
-            font-family: var(--font-stack);
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--btn-text);
-            background-color: var(--accent-color);
-            border: none;
-            border-radius: var(--border-radius-btn);
-            cursor: pointer;
-            text-align: center;
-            transition: background-color 0.15s ease; /* Transición sutil solo para el hover */
-        }
-
-        .download-btn:hover {
-            background-color: var(--accent-hover);
         }
 
         .social-link {
@@ -187,10 +223,19 @@
         </header>
 
         <section class="section-box">
-            <h2>💻 Centro de Descargas</h2>
-            <div class="grid-buttons">
-                <button class="download-btn">Descargar para PC</button>
-                <button class="download-btn">Descargar para Android</button>
+            <h2>💾 Centro de Descargas</h2>
+            
+            <div class="download-platform-container">
+                
+                <div class="platform-block">
+                    <div class="platform-title">💻 Descargar para PC</div>
+                    <div class="links-grid">
+                        <a href="https://cgewljsvlkpuxegzremr.supabase.co/storage/v1/object/public/archivos/fnaf-foxy-jumpscare.gif" class="download-link-item">
+                            <span>Servidor Principal</span>
+                            <span class="link-server-name">Directo</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -198,8 +243,8 @@
             <h2>🌐 Comunidad Oficial</h2>
             <div class="grid-buttons">
                 <a href="#" class="social-link">Discord</a>
-                <a href="https://youtube.com/@icpu_x" class="social-link">YouTube</a>
-                <a href="#" class="social-link">Correo</a>
+                <a href="https://www.youtube.com/@icpu_x" class="social-link">YouTube</a>
+                <a href="#" class="social-link">Soporte</a>
             </div>
         </section>
 
