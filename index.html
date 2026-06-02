@@ -9,9 +9,9 @@
         :root {
             --font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             --border-radius-card: 12px;
-            --border-radius-btn: 8px;
+            --border-radius-btn: 6px;
             
-            /* Colores adaptados para contrastar con el fondo oscuro animado */
+            /* Colores de la interfaz adaptados al fondo */
             --container-bg: rgba(30, 30, 30, 0.65);
             --card-bg: rgba(45, 45, 45, 0.5);
             --card-border: rgba(255, 255, 255, 0.08);
@@ -29,7 +29,7 @@
             padding: 0;
         }
 
-        /* --- FONDO ANIMADO RGB SUAVE (DIAGONAL HACIA ABAJO) --- */
+        /* --- FONDO ANIMADO RGB SUAVE --- */
         body {
             font-family: var(--font-stack);
             color: var(--text-main);
@@ -50,18 +50,19 @@
             100% { background-position: 0% 0%; }
         }
 
-        /* --- CUADRO PRINCIPAL TOTALMENTE ADAPTATIVO (A1) --- */
+        /* --- CUADRO PRINCIPAL ADAPTATIVO --- */
         .container {
             width: 100%;
-            min-height: 100vh; /* Se expande por completo en pantallas chicas */
+            min-height: 100vh;
             background-color: var(--container-bg);
-            backdrop-filter: blur(20px); /* Efecto esmerilado tipo Windows 11 */
+            backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: none;
-            padding: 40px 20px;
+            padding: 50px 20px 30px 20px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
+            align-items: center;
             animation: fadeInEfecto 1s ease-out forwards;
         }
 
@@ -70,69 +71,109 @@
             to { opacity: 1; transform: scale(1); }
         }
 
+        /* --- HEADER Y TÍTULO CON EFECTO 3D (A2) --- */
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px; /* Más espacio hacia abajo para que destaque */
+            padding-top: 20px;
         }
 
         h1 {
-            font-size: 2.4rem;
-            font-weight: 600;
+            font-size: 2.8rem;
+            font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 12px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            /* Efecto de relieve y profundidad 3D limpio */
+            text-shadow: 
+                0 1px 0 #d9d9d9,
+                0 2px 0 #b3b3b3,
+                0 3px 0 #999999,
+                0 4px 0 #808080,
+                0 5px 0 #666666,
+                0 6px 1px rgba(0,0,0,0.1),
+                0 0 5px rgba(0,0,0,0.1),
+                0 1px 3px rgba(0,0,0,0.3),
+                0 3px 5px rgba(0,0,0,0.2),
+                0 5px 10px rgba(0,0,0,0.25),
+                0 10px 10px rgba(0,0,0,0.2),
+                0 20px 20px rgba(0,0,0,0.15);
         }
 
-        p.description {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
+        /* --- CONTENEDOR DE SECCIONES (A1) --- */
+        .sections-wrapper {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        /* --- SECCIONES REDISEÑADAS (A2) --- */
         .section-box {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--border-radius-card);
             padding: 24px;
-            margin-bottom: 24px;
             width: 100%;
-            max-width: 700px; /* Centrado estético del contenido interior */
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         }
 
         .section-box h2 {
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin-bottom: 18px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            color: var(--text-main);
+            opacity: 0.9;
         }
 
-        /* --- SECCIÓN 1: DESCARGA --- */
-        .download-wrapper {
+        /* --- ESTILOS ESPECÍFICOS DE LAS NUEVAS SECCIONES --- */
+        
+        /* 1ra Sección: Imágenes Previas */
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+        
+        .preview-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px dashed var(--card-border);
+            border-radius: 6px;
             display: flex;
-            flex-direction: column;
-            gap: 14px;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* 2da Sección: Descripción */
+        .description-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* 3ra Sección: Descarga limpia (A4) */
+        .download-wrapper {
+            width: 100%;
         }
 
         .download-link-item {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center; /* Centrado del texto */
             padding: 16px;
             background-color: var(--link-box-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--border-radius-btn);
             text-decoration: none;
             color: var(--text-main);
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 1.05rem;
+            font-weight: 600;
             transition: all 0.2s ease;
         }
 
@@ -142,62 +183,67 @@
             transform: translateY(-2px);
         }
 
-        .link-server-name {
-            background-color: var(--accent-color);
-            color: #000000;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
+        /* --- SECCIÓN REDES SOCIALES: COMPACTA Y PLANA (A3) --- */
+        .social-bar-section {
+            width: 100%;
+            max-width: 700px;
+            margin-top: 30px; /* Más separación hacia abajo */
         }
 
-        /* --- SECCIÓN 2: REDES SOCIALES --- */
         .grid-buttons {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
+            width: 100%;
         }
 
         .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 14px;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            background-color: var(--link-box-bg);
-            border: 1px solid var(--card-border);
+            padding: 10px 14px; /* Más pequeños en altura */
+            font-size: 0.85rem; /* Letra compacta */
+            color: var(--text-muted);
+            background-color: rgba(255, 255, 255, 0.03); /* Más plano */
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: var(--border-radius-btn);
             text-decoration: none;
-            font-weight: 400;
-            transition: all 0.2s ease;
+            font-weight: 500;
+            transition: all 0.15s ease;
         }
 
         .social-link:hover {
-            background-color: var(--link-box-hover);
-            border-color: var(--text-muted);
-            transform: translateY(-2px);
+            background-color: var(--link-box-bg);
+            border-color: var(--card-border);
+            color: var(--text-main);
         }
 
+        /* --- FOOTER FUERA DE LAS SECCIONES (A5) --- */
         footer {
-            margin-top: 20px;
+            margin-top: 40px;
+            padding: 10px 0;
             text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            width: 100%;
         }
 
-        /* --- RESPONSIVIDAD DINÁMICA SEGÚN DISPOSITIVO --- */
+        /* --- RESPONSIVIDAD PARA PANTALLAS GRANDES --- */
         @media (min-width: 768px) {
             .container {
                 min-height: auto;
-                max-width: 850px; /* Anchura máxima fluida en PCs */
+                max-width: 850px;
                 border: 1px solid var(--card-border);
                 border-radius: var(--border-radius-card);
-                padding: 50px 40px;
+                padding: 60px 40px 40px 40px;
                 box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             }
+
+            h1 {
+                font-size: 3.4rem;
+            }
             
+            /* Botones de redes más larguitos de forma horizontal */
             .grid-buttons {
                 flex-direction: row;
             }
@@ -211,35 +257,51 @@
 <body>
 
     <div class="container">
+        
         <header>
             <h1>AdvanceStudios™</h1>
-            <p class="description">
-                Bienvenido a nuestra plataforma oficial. Explora nuestros últimos lanzamientos y herramientas de software optimizadas para múltiples plataformas.
-            </p>
         </header>
 
-        <section class="section-box">
-            <h2>💾 Centro de Descargas</h2>
-            <div class="download-wrapper">
-                <a href="https://cgewljsvlkpuxegzremr.supabase.co/storage/v1/object/public/archivos/fnaf-foxy-jumpscare.gif" class="download-link-item">
-                    <span>Descargar para PC (Directo)</span>
-                    <span class="link-server-name">Servidor 1</span>
-                </a>
-            </div>
-        </section>
+        <div class="sections-wrapper">
+            
+            <section class="section-box">
+                <h2>🖼️ Imágenes Previas</h2>
+                <div class="preview-grid">
+                    <div class="preview-placeholder">Captura 1</div>
+                    <div class="preview-placeholder">Captura 2</div>
+                    <div class="preview-placeholder">Captura 3</div>
+                </div>
+            </section>
 
-        <section class="section-box">
-            <h2>🌐 Comunidad Oficial</h2>
+            <section class="section-box">
+                <h2>📝 Descripción</h2>
+                <p class="description-text">
+                    Bienvenido a nuestra plataforma oficial. Aquí encontrarás software optimizado y nuestros últimos lanzamientos desarrollados para múltiples plataformas con un rendimiento excepcional.
+                </p>
+            </section>
+
+            <section class="section-box">
+                <div class="download-wrapper">
+                    <a href="https://cgewljsvlkpuxegzremr.supabase.co/storage/v1/object/public/archivos/fnaf-foxy-jumpscare.gif" class="download-link-item">
+                        Descargar
+                    </a>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="social-bar-section">
             <div class="grid-buttons">
                 <a href="#" class="social-link">Discord</a>
                 <a href="#" class="social-link">YouTube</a>
                 <a href="#" class="social-link">Soporte</a>
             </div>
-        </section>
+        </div>
 
         <footer>
             <p>&copy; 2026 AdvanceStudios™. All Rights Reserved.</p>
         </footer>
+        
     </div>
 
 </body>
