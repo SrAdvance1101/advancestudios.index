@@ -131,6 +131,14 @@
             color: var(--text-muted);
         }
 
+        .preview-image {
+             width: 100%;
+            aspect-ratio: 16 / 9; /* Mantiene el formato panorámico estándar */
+            object-fit: cover;     /* Hace que la imagen se adapte al cuadro sin deformarse */
+            border-radius: 6px;    /* Esquinas redondeadas tipo Windows 11 */
+            border: 1px solid var(--card-border);
+        }
+        
         /* --- 2da Sección: Descripción --- */
         .description-text {
             font-size: 0.95rem;
