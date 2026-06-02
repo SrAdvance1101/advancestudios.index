@@ -11,7 +11,7 @@
             --border-radius-card: 12px;
             --border-radius-btn: 6px;
             
-            /* Colores de las secciones (ahora flotan directo sobre el fondo) */
+            /* Colores de las secciones */
             --card-bg: rgba(35, 35, 40, 0.6);
             --card-border: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff;
@@ -53,7 +53,7 @@
         /* --- HEADER Y TÍTULO CON EFECTO 3D --- */
         header {
             text-align: center;
-            margin-bottom: 50px; /* Separación marcada del contenido */
+            margin-bottom: 50px;
             width: 100%;
             max-width: 700px;
             animation: fadeInEfecto 1s ease-out forwards;
@@ -96,19 +96,49 @@
             padding: 24px;
             width: 100%;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(12px); /* El efecto esmerilado ahora lo tiene cada cuadro individual */
+            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
 
+        /* --- 🎯 SUBTÍTULOS ESTILO PROTOTIPO BANNER GAMING --- */
         .section-box h2 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            display: inline-flex; /* Hace que el fondo ocupe solo el ancho del texto */
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             color: var(--text-main);
-            opacity: 0.9;
+            padding: 6px 45px 6px 14px; /* Espacio extra a la derecha para el corte diagonal */
+            position: relative;
+            z-index: 1;
+            
+            /* Renderiza la barra gris oscura con su respectivo corte inclinado a 45 grados */
+            background: linear-gradient(135deg, rgba(30, 30, 35, 0.85) 0%, rgba(30, 30, 35, 0.85) calc(100% - 15px), transparent calc(100% - 15px));
+            border-left: 4px solid var(--accent-color); /* Línea de acento inicial izquierda */
+        }
+
+        /* Las dos líneas paralelas inclinadas del extremo derecho (Cian/Azul brillante) */
+        .section-box h2::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 10px;
+            width: 22px;
+            height: 100%;
+            z-index: -1;
+            /* Crea el patrón de doble línea diagonal usando un gradiente repetitivo */
+            background: repeating-linear-gradient(
+                135deg,
+                transparent,
+                transparent 4px,
+                var(--accent-color) 4px,
+                var(--accent-color) 10px
+            );
+            /* Corta el exceso superior e inferior para mantener simetría */
+            transform: skewX(-5deg); 
         }
 
         /* --- 1ra Sección: Imágenes Previas --- */
@@ -117,25 +147,12 @@
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 12px;
         }
-        
-        .preview-placeholder {
-            width: 100%;
-            aspect-ratio: 30 / 10;
-            background-color: rgba(255, 255, 255, 0.04);
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
 
         .preview-image {
-             width: 100%;
-            aspect-ratio: 16 / 9; /* Mantiene el formato panorámico estándar */
-            object-fit: cover;     /* Hace que la imagen se adapte al cuadro sin deformarse */
-            border-radius: 6px;    /* Esquinas redondeadas tipo Windows 11 */
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 6px;
             border: 1px solid var(--card-border);
         }
         
@@ -177,7 +194,7 @@
         .social-bar-section {
             width: 100%;
             max-width: 700px;
-            margin-top: 35px; /* Separación fluida hacia abajo */
+            margin-top: 35px;
             animation: fadeInEfecto 1.4s ease-out forwards;
         }
 
@@ -253,17 +270,13 @@
     <div class="sections-wrapper">
         
         <section class="section-box">
-    <h2>🖼️ Imágenes Previas</h2>
-    <div class="preview-grid">
-        
-        <img src="Image not Found" alt="Captura de pantalla 1" class="preview-image">
-        
-        <img src="Image not Found" alt="Captura de pantalla 2" class="preview-image">
-        
-        <img src="Image not Found" alt="Captura de pantalla 3" class="preview-image">
-
-    </div>
-</section>
+            <h2>🖼️ Imágenes Previas</h2>
+            <div class="preview-grid">
+                <img src="Image not Found" alt="Captura de pantalla 1" class="preview-image">
+                <img src="Image not Found" alt="Captura de pantalla 2" class="preview-image">
+                <img src="Image not Found" alt="Captura de pantalla 3" class="preview-image">
+            </div>
+        </section>
 
         <section class="section-box">
             <h2>📝 Descripción</h2>
