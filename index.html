@@ -11,9 +11,8 @@
             --border-radius-card: 12px;
             --border-radius-btn: 6px;
             
-            /* Colores de la interfaz adaptados al fondo */
-            --container-bg: rgba(30, 30, 30, 0.65);
-            --card-bg: rgba(45, 45, 45, 0.5);
+            /* Colores de las secciones (ahora flotan directo sobre el fondo) */
+            --card-bg: rgba(35, 35, 40, 0.6);
             --card-border: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff;
             --text-muted: #cccccc;
@@ -35,9 +34,10 @@
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 0;
+            justify-content: flex-start;
+            padding: 60px 20px 30px 20px;
             overflow-x: hidden;
             background: linear-gradient(135deg, #121214, #1a1c24, #15222e, #1c1625, #121214);
             background-size: 400% 400%;
@@ -50,32 +50,13 @@
             100% { background-position: 0% 0%; }
         }
 
-        /* --- CUADRO PRINCIPAL ADAPTATIVO --- */
-        .container {
-            width: 100%;
-            min-height: 100vh;
-            background-color: var(--container-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: none;
-            padding: 50px 20px 30px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            animation: fadeInEfecto 1s ease-out forwards;
-        }
-
-        @keyframes fadeInEfecto {
-            from { opacity: 0; transform: scale(0.98); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        /* --- HEADER Y TÍTULO CON EFECTO 3D (A2) --- */
+        /* --- HEADER Y TÍTULO CON EFECTO 3D --- */
         header {
             text-align: center;
-            margin-bottom: 60px; /* Más espacio hacia abajo para que destaque */
-            padding-top: 20px;
+            margin-bottom: 50px; /* Separación marcada del contenido */
+            width: 100%;
+            max-width: 700px;
+            animation: fadeInEfecto 1s ease-out forwards;
         }
 
         h1 {
@@ -83,7 +64,6 @@
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #ffffff;
-            /* Efecto de relieve y profundidad 3D limpio */
             text-shadow: 
                 0 1px 0 #d9d9d9,
                 0 2px 0 #b3b3b3,
@@ -99,13 +79,14 @@
                 0 20px 20px rgba(0,0,0,0.15);
         }
 
-        /* --- CONTENEDOR DE SECCIONES (A1) --- */
+        /* --- CONTENEDOR DE SECCIONES LIBRES --- */
         .sections-wrapper {
             width: 100%;
             max-width: 700px;
             display: flex;
             flex-direction: column;
             gap: 20px;
+            animation: fadeInEfecto 1.2s ease-out forwards;
         }
 
         .section-box {
@@ -114,7 +95,9 @@
             border-radius: var(--border-radius-card);
             padding: 24px;
             width: 100%;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(12px); /* El efecto esmerilado ahora lo tiene cada cuadro individual */
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .section-box h2 {
@@ -128,9 +111,7 @@
             opacity: 0.9;
         }
 
-        /* --- ESTILOS ESPECÍFICOS DE LAS NUEVAS SECCIONES --- */
-        
-        /* 1ra Sección: Imágenes Previas */
+        /* --- 1ra Sección: Imágenes Previas --- */
         .preview-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -140,8 +121,8 @@
         .preview-placeholder {
             width: 100%;
             aspect-ratio: 16 / 9;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px dashed var(--card-border);
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -150,14 +131,14 @@
             color: var(--text-muted);
         }
 
-        /* 2da Sección: Descripción */
+        /* --- 2da Sección: Descripción --- */
         .description-text {
             font-size: 0.95rem;
             color: var(--text-muted);
             line-height: 1.6;
         }
 
-        /* 3ra Sección: Descarga limpia (A4) */
+        /* --- 3ra Sección: Botón de Descarga --- */
         .download-wrapper {
             width: 100%;
         }
@@ -165,7 +146,7 @@
         .download-link-item {
             display: flex;
             align-items: center;
-            justify-content: center; /* Centrado del texto */
+            justify-content: center;
             padding: 16px;
             background-color: var(--link-box-bg);
             border: 1px solid var(--card-border);
@@ -181,13 +162,15 @@
             border-color: var(--accent-color);
             background-color: var(--link-box-hover);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(96, 205, 255, 0.2);
         }
 
-        /* --- SECCIÓN REDES SOCIALES: COMPACTA Y PLANA (A3) --- */
+        /* --- SECCIÓN REDES SOCIALES: COMPACTA Y PLANA --- */
         .social-bar-section {
             width: 100%;
             max-width: 700px;
-            margin-top: 30px; /* Más separación hacia abajo */
+            margin-top: 35px; /* Separación fluida hacia abajo */
+            animation: fadeInEfecto 1.4s ease-out forwards;
         }
 
         .grid-buttons {
@@ -201,10 +184,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 14px; /* Más pequeños en altura */
-            font-size: 0.85rem; /* Letra compacta */
+            padding: 12px 14px;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            background-color: rgba(255, 255, 255, 0.03); /* Más plano */
+            background-color: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: var(--border-radius-btn);
             text-decoration: none;
@@ -214,36 +197,35 @@
 
         .social-link:hover {
             background-color: var(--link-box-bg);
-            border-color: var(--card-border);
+            border-color: rgba(255, 255, 255, 0.2);
             color: var(--text-main);
         }
 
-        /* --- FOOTER FUERA DE LAS SECCIONES (A5) --- */
+        /* --- FOOTER TOTALMENTE DIRECTO A LA PÁGINA --- */
         footer {
-            margin-top: 40px;
-            padding: 10px 0;
+            margin-top: 50px;
             text-align: center;
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.35);
             width: 100%;
+            animation: fadeInEfecto 1.6s ease-out forwards;
+        }
+
+        @keyframes fadeInEfecto {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- RESPONSIVIDAD PARA PANTALLAS GRANDES --- */
         @media (min-width: 768px) {
-            .container {
-                min-height: auto;
-                max-width: 850px;
-                border: 1px solid var(--card-border);
-                border-radius: var(--border-radius-card);
-                padding: 60px 40px 40px 40px;
-                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            body {
+                padding-top: 80px;
             }
-
+            
             h1 {
                 font-size: 3.4rem;
             }
             
-            /* Botones de redes más larguitos de forma horizontal */
             .grid-buttons {
                 flex-direction: row;
             }
@@ -256,53 +238,49 @@
 </head>
 <body>
 
-    <div class="container">
+    <header>
+        <h1>AdvanceStudios™</h1>
+    </header>
+
+    <div class="sections-wrapper">
         
-        <header>
-            <h1>AdvanceStudios™</h1>
-        </header>
-
-        <div class="sections-wrapper">
-            
-            <section class="section-box">
-                <h2>🖼️ Imágenes Previas</h2>
-                <div class="preview-grid">
-                    <div class="preview-placeholder">Captura 1</div>
-                    <div class="preview-placeholder">Captura 2</div>
-                    <div class="preview-placeholder">Captura 3</div>
-                </div>
-            </section>
-
-            <section class="section-box">
-                <h2>📝 Descripción</h2>
-                <p class="description-text">
-                    Bienvenido a nuestra plataforma oficial. Aquí encontrarás software optimizado y nuestros últimos lanzamientos desarrollados para múltiples plataformas con un rendimiento excepcional.
-                </p>
-            </section>
-
-            <section class="section-box">
-                <div class="download-wrapper">
-                    <a href="https://cgewljsvlkpuxegzremr.supabase.co/storage/v1/object/public/archivos/fnaf-foxy-jumpscare.gif" class="download-link-item">
-                        Descargar
-                    </a>
-                </div>
-            </section>
-
-        </div>
-
-        <div class="social-bar-section">
-            <div class="grid-buttons">
-                <a href="#" class="social-link">Discord</a>
-                <a href="#" class="social-link">YouTube</a>
-                <a href="#" class="social-link">Soporte</a>
+        <section class="section-box">
+            <h2>🖼️ Imágenes Previas</h2>
+            <div class="preview-grid">
+                <div class="preview-placeholder">Captura 1</div>
+                <div class="preview-placeholder">Captura 2</div>
+                <div class="preview-placeholder">Captura 3</div>
             </div>
-        </div>
+        </section>
 
-        <footer>
-            <p>&copy; 2026 AdvanceStudios™. All Rights Reserved.</p>
-        </footer>
-        
+        <section class="section-box">
+            <h2>📝 Descripción</h2>
+            <p class="description-text">
+                Bienvenido a nuestra plataforma oficial. Aquí encontrarás software optimizado y nuestros últimos lanzamientos desarrollados para múltiples plataformas con un rendimiento excepcional.
+            </p>
+        </section>
+
+        <section class="section-box">
+            <div class="download-wrapper">
+                <a href="https://cgewljsvlkpuxegzremr.supabase.co/storage/v1/object/public/archivos/fnaf-foxy-jumpscare.gif" class="download-link-item">
+                    Descargar
+                </a>
+            </div>
+        </section>
+
     </div>
+
+    <div class="social-bar-section">
+        <div class="grid-buttons">
+            <a href="#" class="social-link">Discord</a>
+            <a href="#" class="social-link">YouTube</a>
+            <a href="#" class="social-link">Soporte</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AdvanceStudios™. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
