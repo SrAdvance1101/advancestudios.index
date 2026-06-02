@@ -18,7 +18,7 @@
             --text-main: #ffffff;
             --text-muted: #cccccc;
             
-            /* CIAN EQUILIBRADO: Destaca sin ser demasiado chillón */
+            /* CIAN EQUILIBRADO */
             --accent-color: #00f0ff; 
             --accent-hover: #00d8e6;
             --link-box-bg: rgba(255, 255, 255, 0.07);
@@ -188,7 +188,7 @@
             box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
         }
 
-        /* --- SECCIÓN REDES SOCIALES: COMPACTA Y PLANA --- */
+        /* --- SECCIÓN REDES SOCIALES --- */
         .social-bar-section {
             width: 100%;
             max-width: 700px;
@@ -207,7 +207,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px; /* Espacio entre el ícono y el texto */
+            gap: 8px;
             padding: 12px 14px;
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -219,7 +219,6 @@
             transition: all 0.15s ease;
         }
 
-        /* Animación y color específicos al pasar el cursor por los íconos */
         .social-link i {
             font-size: 1rem;
             transition: transform 0.2s ease;
@@ -232,7 +231,37 @@
         }
 
         .social-link:hover i {
-            transform: scale(1.15); /* Pequeño efecto de agrandado en el ícono al hacer hover */
+            transform: scale(1.15);
+        }
+
+        /* --- 🎯 BOTÓN FLOTANTE DE INFORMACIÓN (ABAJO A LA DERECHA) --- */
+        .info-floating-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999; /* Asegura que flote por encima de todo el contenido */
+            display: block;
+            width: 55px;  /* Tamaño ideal para que se vea nítido */
+            height: 55px;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
+            cursor: pointer;
+        }
+
+        .info-floating-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Efecto interactivo al pasar el mouse (Efecto "Pop" alegre) */
+        .info-floating-btn:hover {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.6));
+        }
+
+        /* Efecto de pulsación al hacer clic */
+        .info-floating-btn:active {
+            transform: scale(0.95);
         }
 
         /* --- FOOTER TOTALMENTE DIRECTO A LA PÁGINA --- */
@@ -250,22 +279,26 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- RESPONSIVIDAD PARA PANTALLAS GRANDES --- */
+        /* --- RESPONSIVIDAD --- */
         @media (min-width: 768px) {
             body {
                 padding-top: 80px;
             }
-            
             h1 {
                 font-size: 3.4rem;
             }
-            
             .grid-buttons {
                 flex-direction: row;
             }
-
             .social-link {
                 flex: 1;
+            }
+            /* Botón un poco más grande en pantallas de escritorio */
+            .info-floating-btn {
+                bottom: 35px;
+                right: 35px;
+                width: 65px;
+                height: 65px;
             }
         }
     </style>
@@ -314,6 +347,10 @@
     <footer>
         <p>&copy; 2026 AdvanceStudios™. All Rights Reserved.</p>
     </footer>
+
+    <a href="#" target="_blank" class="info-floating-btn" title="Ver documentación en GitHub">
+        <img src="tu-icono-info.png" alt="Información de AdvanceStudios">
+    </a>
 
 </body>
 </html>
