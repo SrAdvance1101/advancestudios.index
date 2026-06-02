@@ -5,42 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdvanceStudios™</title>
     <style>
-        /* --- FUENTES ESTÁNDAR Y RECONOCIDAS EN TODOS LOS WEBSITES --- */
+        /* --- FUENTES Y VARIABLES DEL SISTEMA --- */
         :root {
             --font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --border-radius-card: 12px;
+            --border-radius-btn: 8px;
             
-            /* --- RADIO DE BORDES TIPO WINDOWS 11 --- */
-            --border-radius-card: 8px;
-            --border-radius-btn: 6px;
-        }
-
-        /* --- TEMA AUTOMÁTICO (Sincronizado con el dispositivo) --- */
-        :root {
-            --bg-color: #f3f3f3;
-            --container-bg: #ffffff;
-            --card-bg: #f9f9f9;
-            --card-border: rgba(0, 0, 0, 0.08);
-            --text-main: #1f1f1f;
-            --text-muted: #5d5d5d;
-            --accent-color: #0067b8;
-            --accent-hover: #005a9e;
-            --btn-text: #ffffff;
-            --link-box-bg: #f0f0f0;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #202020;
-                --container-bg: #2d2d2d;
-                --card-bg: #323232;
-                --card-border: rgba(255, 255, 255, 0.06);
-                --text-main: #ffffff;
-                --text-muted: #aaaaaa;
-                --accent-color: #60cdff;
-                --accent-hover: #4cc3ff;
-                --btn-text: #000000;
-                --link-box-bg: #383838;
-            }
+            /* Colores adaptados para contrastar con el fondo oscuro animado */
+            --container-bg: rgba(30, 30, 30, 0.65);
+            --card-bg: rgba(45, 45, 45, 0.5);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #cccccc;
+            --accent-color: #60cdff;
+            --accent-hover: #4cc3ff;
+            --link-box-bg: rgba(255, 255, 255, 0.07);
+            --link-box-hover: rgba(255, 255, 255, 0.15);
         }
 
         * {
@@ -49,209 +29,181 @@
             padding: 0;
         }
 
+        /* --- FONDO ANIMADO RGB SUAVE (DIAGONAL HACIA ABAJO) --- */
         body {
             font-family: var(--font-stack);
-            background-color: var(--bg-color);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Permite un desplazamiento suave si el contenido crece */
+            align-items: center;
+            padding: 0;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #121214, #1a1c24, #15222e, #1c1625, #121214);
+            background-size: 400% 400%;
+            animation: rgbMovimientoSuave 20s ease infinite;
         }
 
-        /* --- CONTENEDOR FLUIDO Y ADAPTATIVO --- */
+        @keyframes rgbMovimientoSuave {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        /* --- CUADRO PRINCIPAL TOTALMENTE ADAPTATIVO (A1) --- */
         .container {
             width: 100%;
-            max-width: 100%; /* Por defecto ocupa todo el ancho en móviles */
+            min-height: 100vh; /* Se expande por completo en pantallas chicas */
             background-color: var(--container-bg);
-            border-left: none;
-            border-right: none;
-            border-top: 1px solid var(--card-border);
-            border-bottom: 1px solid var(--card-border);
-            padding: 30px 16px; /* Relleno optimizado para pantallas pequeñas */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            animation: fadeInEfecto 1.2s ease-out forwards;
+            backdrop-filter: blur(20px); /* Efecto esmerilado tipo Windows 11 */
+            -webkit-backdrop-filter: blur(20px);
+            border: none;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeInEfecto 1s ease-out forwards;
         }
 
         @keyframes fadeInEfecto {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         header {
             text-align: center;
-            margin-bottom: 35px;
-            padding: 0 10px;
+            margin-bottom: 40px;
         }
 
         h1 {
-            font-size: 2rem;
+            font-size: 2.4rem;
             font-weight: 600;
             letter-spacing: -0.5px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         p.description {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        /* --- APARTADOS CUADRADOS ADAPTATIVOS --- */
+        /* --- SECCIONES REDISEÑADAS (A2) --- */
         .section-box {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--border-radius-card);
-            padding: 20px;
-            margin-bottom: 20px;
-            text-align: left;
+            padding: 24px;
+            margin-bottom: 24px;
+            width: 100%;
+            max-width: 700px; /* Centrado estético del contenido interior */
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         .section-box h2 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 500;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        /* --- CONTENEDOR SUB-APARTADOS DE DESCARGA --- */
-        .download-platform-container {
+        /* --- SECCIÓN 1: DESCARGA --- */
+        .download-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
-        .platform-block {
-            border-left: 3px solid var(--accent-color);
-            padding-left: 14px;
-            margin-bottom: 4px;
-        }
-
-        .platform-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
-
-        /* --- GRILLA ADAPTATIVA PARA LOS ENLACES DE DESCARGA --- */
-        .links-grid {
-            display: flex;
-            flex-direction: column; /* Lista vertical en móviles */
-            gap: 10px;
-        }
-
-        /* Bloque individual de enlace */
         .download-link-item {
-            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 14px;
+            padding: 16px;
             background-color: var(--link-box-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--border-radius-btn);
             text-decoration: none;
             color: var(--text-main);
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 500;
-            transition: border-color 0.15s ease, background-color 0.15s ease;
+            transition: all 0.2s ease;
         }
 
         .download-link-item:hover {
             border-color: var(--accent-color);
-            background-color: var(--container-bg);
+            background-color: var(--link-box-hover);
+            transform: translateY(-2px);
         }
 
         .link-server-name {
-            opacity: 0.7;
-            font-size: 0.8rem;
-            font-weight: 400;
+            background-color: var(--accent-color);
+            color: #000000;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
         }
 
-        /* --- BOTONES DE REDES COMUNIDAD --- */
+        /* --- SECCIÓN 2: REDES SOCIALES --- */
         .grid-buttons {
             display: flex;
-            flex-direction: column; /* Lista vertical en móviles para mejor alcance */
-            gap: 10px;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 16px;
-            font-size: 0.9rem;
+            padding: 14px;
+            font-size: 0.95rem;
             color: var(--text-main);
-            background-color: var(--container-bg);
+            background-color: var(--link-box-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--border-radius-btn);
             text-decoration: none;
             font-weight: 400;
-            transition: background-color 0.15s ease, border-color 0.15s ease;
+            transition: all 0.2s ease;
         }
 
         .social-link:hover {
-            background-color: var(--card-bg);
+            background-color: var(--link-box-hover);
             border-color: var(--text-muted);
+            transform: translateY(-2px);
         }
 
         footer {
-            margin-top: 30px;
+            margin-top: 20px;
             text-align: center;
             font-size: 0.85rem;
             color: var(--text-muted);
-            padding-bottom: 10px;
         }
 
-        /* --- 🖥️ AJUSTES ESPECÍFICOS PARA DISPOSITIVOS MEDIANOS Y GRANDES (PC / TABLETS) --- */
+        /* --- RESPONSIVIDAD DINÁMICA SEGÚN DISPOSITIVO --- */
         @media (min-width: 768px) {
-            body {
-                align-items: center; /* Centrado vertical en pantallas grandes */
-                padding: 40px 20px;
-            }
-
             .container {
-                max-width: 800px; /* Limita el ancho en PC para que no se estire demasiado el texto */
+                min-height: auto;
+                max-width: 850px; /* Anchura máxima fluida en PCs */
                 border: 1px solid var(--card-border);
                 border-radius: var(--border-radius-card);
-                padding: 40px 30px;
+                padding: 50px 40px;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .links-grid {
-                flex-direction: row; /* Distribución horizontal en PC */
-                flex-wrap: wrap;
-            }
-
-            .download-link-item {
-                flex: 1;
-                min-width: 160px;
-                width: auto;
-            }
-
+            
             .grid-buttons {
-                flex-direction: row; /* Distribución horizontal en PC */
-                flex-wrap: wrap;
+                flex-direction: row;
             }
 
             .social-link {
                 flex: 1;
-                min-width: 120px;
-                justify-content: center;
             }
         }
     </style>
@@ -268,17 +220,11 @@
 
         <section class="section-box">
             <h2>💾 Centro de Descargas</h2>
-            
-            <div class="download-platform-container">
-                <div class="platform-block">
-                    <div class="platform-title">💻 Descargar para PC</div>
-                    <div class="links-grid">
-                        <a href="https://cgewljsvlkpuxegzremr.supabase.co/storage/v1/object/public/archivos/fnaf-foxy-jumpscare.gif" class="download-link-item">
-                            <span>Descargar</span>
-                            <span class="link-server-name">Directo</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="download-wrapper">
+                <a href="https://cgewljsvlkpuxegzremr.supabase.co/storage/v1/object/public/archivos/fnaf-foxy-jumpscare.gif" class="download-link-item">
+                    <span>Descargar para PC (Directo)</span>
+                    <span class="link-server-name">Servidor 1</span>
+                </a>
             </div>
         </section>
 
