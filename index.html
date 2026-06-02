@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdvanceStudios™</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* --- FUENTES Y VARIABLES DEL SISTEMA --- */
         :root {
@@ -102,7 +103,7 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
-        /* --- 🎯 SUBTÍTULOS REPLICADOS FIELMENTE DEL PROTOTIPO --- */
+        /* --- SUBTÍTULOS ESTILO PROTOTIPO BANNER GAMING --- */
         .section-box h2 {
             font-size: 1.05rem;
             font-weight: 700;
@@ -110,32 +111,23 @@
             letter-spacing: 0.5px;
             margin-bottom: 22px;
             color: var(--text-main);
-            
-            /* Ocupa el ancho completo disponible */
             display: flex; 
             align-items: center;
-            
             position: relative;
             z-index: 1;
-            height: 38px; /* Altura fija para controlar la inclinación exacta */
+            height: 38px;
             padding-left: 16px;
-
-            /* Banner principal gris oscuro cortado en diagonal limpia en el extremo derecho */
             background: linear-gradient(125deg, #2b2b30 0%, #2b2b30 72%, transparent 72.1%);
         }
 
-        /* Las dos barras paralelas inclinadas del extremo derecho */
         .section-box h2::after {
             content: '';
             position: absolute;
             top: 0;
             right: 0;
             height: 100%;
-            /* Ajusta el ancho total del conjunto de líneas en la zona derecha */
             width: 25%; 
             z-index: -1;
-            
-            /* Crea el patrón exacto de dos líneas cian separadas por transparencias */
             background: linear-gradient(125deg, 
                 transparent 0%, 
                 transparent 15%, 
@@ -215,6 +207,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px; /* Espacio entre el ícono y el texto */
             padding: 12px 14px;
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -226,10 +219,20 @@
             transition: all 0.15s ease;
         }
 
+        /* Animación y color específicos al pasar el cursor por los íconos */
+        .social-link i {
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+
         .social-link:hover {
             background-color: var(--link-box-bg);
             border-color: rgba(255, 255, 255, 0.2);
             color: var(--text-main);
+        }
+
+        .social-link:hover i {
+            transform: scale(1.15); /* Pequeño efecto de agrandado en el ícono al hacer hover */
         }
 
         /* --- FOOTER TOTALMENTE DIRECTO A LA PÁGINA --- */
@@ -301,10 +304,10 @@
 
     <div class="social-bar-section">
         <div class="grid-buttons">
-            <a href="#" class="social-link">X (Twitter)</a>
-            <a href="#" class="social-link">Discord</a>
-            <a href="#" class="social-link">YouTube</a>
-            <a href="#" class="social-link">Soporte</a>
+            <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
+            <a href="#" class="social-link"><i class="fa-brands fa-discord"></i> Discord</a>
+            <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i> YouTube</a>
+            <a href="#" class="social-link"><i class="fa-solid fa-headset"></i> Soporte</a>
         </div>
     </div>
 
