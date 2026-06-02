@@ -234,14 +234,14 @@
             transform: scale(1.15);
         }
 
-        /* --- 🎯 BOTÓN FLOTANTE DE INFORMACIÓN (ABAJO A LA DERECHA) --- */
+        /* --- 🎯 BOTÓN FLOTANTE DE INFORMACIÓN CON TU IMAGEN --- */
         .info-floating-btn {
             position: fixed;
             bottom: 25px;
             right: 25px;
             z-index: 999; /* Asegura que flote por encima de todo el contenido */
             display: block;
-            width: 55px;  /* Tamaño ideal para que se vea nítido */
+            width: 55px;  /* Tamaño ideal en móviles */
             height: 55px;
             transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
             cursor: pointer;
@@ -250,7 +250,7 @@
         .info-floating-btn img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: contain; /* Mantiene las proporciones correctas de icon_info.png */
         }
 
         /* Efecto interactivo al pasar el mouse (Efecto "Pop" alegre) */
@@ -349,7 +349,7 @@
     </footer>
 
     <a href="#" target="_blank" class="info-floating-btn" title="Ver documentación en GitHub">
-        <img src="tu-icono-info.png" alt="Información de AdvanceStudios">
+        <img src="icon_info.png" alt="Información de AdvanceStudios">
     </a>
 
 </body>
