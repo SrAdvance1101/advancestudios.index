@@ -56,18 +56,19 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items: flex-start; /* Permite un desplazamiento suave si el contenido crece */
         }
 
-        /* --- EFECTO DE DESVANECIMIENTO ENTRADA (FADE-IN) --- */
+        /* --- CONTENEDOR FLUIDO Y ADAPTATIVO --- */
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 100%; /* Por defecto ocupa todo el ancho en móviles */
             background-color: var(--container-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--border-radius-card);
-            padding: 40px 30px;
+            border-left: none;
+            border-right: none;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+            padding: 30px 16px; /* Relleno optimizado para pantallas pequeñas */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             animation: fadeInEfecto 1.2s ease-out forwards;
         }
@@ -86,17 +87,18 @@
         header {
             text-align: center;
             margin-bottom: 35px;
+            padding: 0 10px;
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 600;
             letter-spacing: -0.5px;
             margin-bottom: 10px;
         }
 
         p.description {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto;
@@ -108,13 +110,13 @@
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--border-radius-card);
-            padding: 24px;
+            padding: 20px;
             margin-bottom: 20px;
             text-align: left;
         }
 
         .section-box h2 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 500;
             margin-bottom: 15px;
             display: flex;
@@ -122,7 +124,7 @@
             gap: 10px;
         }
 
-        /* --- 📦 CONTENEDOR SUB-APARTADOS DE DESCARGA --- */
+        /* --- CONTENEDOR SUB-APARTADOS DE DESCARGA --- */
         .download-platform-container {
             display: flex;
             flex-direction: column;
@@ -136,27 +138,26 @@
         }
 
         .platform-title {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 8px;
             color: var(--text-main);
         }
 
-        /* --- 🔗 GRILLA PARA LOS ENLACES DE DESCARGA --- */
+        /* --- GRILLA ADAPTATIVA PARA LOS ENLACES DE DESCARGA --- */
         .links-grid {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column; /* Lista vertical en móviles */
             gap: 10px;
         }
 
-        /* Bloque individual de enlace (Mirror / Servidor) */
+        /* Bloque individual de enlace */
         .download-link-item {
-            flex: 1;
-            min-width: 160px;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 14px;
+            padding: 12px 14px;
             background-color: var(--link-box-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--border-radius-btn);
@@ -181,14 +182,15 @@
         /* --- BOTONES DE REDES COMUNIDAD --- */
         .grid-buttons {
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+            flex-direction: column; /* Lista vertical en móviles para mejor alcance */
+            gap: 10px;
         }
 
         .social-link {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            padding: 8px 16px;
+            justify-content: center;
+            padding: 12px 16px;
             font-size: 0.9rem;
             color: var(--text-main);
             background-color: var(--container-bg);
@@ -205,10 +207,52 @@
         }
 
         footer {
-            margin-top: 20px;
+            margin-top: 30px;
             text-align: center;
             font-size: 0.85rem;
             color: var(--text-muted);
+            padding-bottom: 10px;
+        }
+
+        /* --- 🖥️ AJUSTES ESPECÍFICOS PARA DISPOSITIVOS MEDIANOS Y GRANDES (PC / TABLETS) --- */
+        @media (min-width: 768px) {
+            body {
+                align-items: center; /* Centrado vertical en pantallas grandes */
+                padding: 40px 20px;
+            }
+
+            .container {
+                max-width: 800px; /* Limita el ancho en PC para que no se estire demasiado el texto */
+                border: 1px solid var(--card-border);
+                border-radius: var(--border-radius-card);
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .links-grid {
+                flex-direction: row; /* Distribución horizontal en PC */
+                flex-wrap: wrap;
+            }
+
+            .download-link-item {
+                flex: 1;
+                min-width: 160px;
+                width: auto;
+            }
+
+            .grid-buttons {
+                flex-direction: row; /* Distribución horizontal en PC */
+                flex-wrap: wrap;
+            }
+
+            .social-link {
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -226,7 +270,6 @@
             <h2>💾 Centro de Descargas</h2>
             
             <div class="download-platform-container">
-                
                 <div class="platform-block">
                     <div class="platform-title">💻 Descargar para PC</div>
                     <div class="links-grid">
