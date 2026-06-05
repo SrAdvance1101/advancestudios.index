@@ -7,7 +7,11 @@ Este es un nuevo proyecto basado en una pagina nueva en progreso. Por ahora no h
     3. Rediseño en Botones de Redes Sociales
     4. Rediseño Logo/Marca de Pagina
     5. Apartado de Imagenes Rediseñado (en desarrollo)
-    6. Footer Rediseñado. 
+    6. Footer Rediseñado.
+
+- Changes (04/06/2026)
+    1. Cambios miminos.
+    2. Bugs minimos arreglados.
 
 
 Todos los cambios seran registrados aqui como un Registro de Auditoria...
