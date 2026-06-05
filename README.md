@@ -1,4 +1,4 @@
-# AdvanceStudios Proyect
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/42950387-dd22-471d-8b93-10581f1d2d50" /># AdvanceStudios Proyect
 Este es un nuevo proyecto basado en una pagina nueva en progreso. Por ahora no hay nada nuevo porque esta en "progreso".
 
 - Changes (02/06/'26):
@@ -16,6 +16,8 @@ Este es un nuevo proyecto basado en una pagina nueva en progreso. Por ahora no h
 
 Todos los cambios seran registrados aqui como un Registro de Auditoria...
 
+
+<img width="1920" height="1080" alt="advancestudios_page_image_preview1" src="https://github.com/user-attachments/assets/ea257ac4-4a18-48ca-9e95-1b7d44ee53e3" />
 
 
 @AdvanceStudios™ - All Rights Reserved 26/06/2026.
