@@ -14,4 +14,4 @@ Todos los cambios seran registrados aqui como un Registro de Auditoria...
 
 
 
-@AdvanceStudios™ - All Rights Reserved 2026.
+@AdvanceStudios™ - All Rights Reserved 26/06/2026.
