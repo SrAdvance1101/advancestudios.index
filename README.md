@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/42950387-dd22-471d-8b93-10581f1d2d50" /># AdvanceStudios Proyect
+# AdvanceStudios Proyect
 Este es un nuevo proyecto basado en una pagina nueva en progreso. Por ahora no hay nada nuevo porque esta en "progreso".
 
 - Changes (02/06/'26):
